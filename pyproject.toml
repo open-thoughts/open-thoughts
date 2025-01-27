@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "open-thoughts"
+version = "0.1.0"
+description = "Open Thoughts"
+authors = ["Open Thoughts <openthoughts@mlfoundations.ai>"]
+readme = "README.md"
+license = "Apache-2.0"
+homepage = "https://github.com/mlfoundations/open-thoughts"
+repository = "https://github.com/mlfoundations/open-thoughts"
+keywords = ["ai"]
+packages = [
+    {include = "open_thoughts"},
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+datasets = "^3.0.2"
+timeout-decorator = "^0.5.0"
+rapidfuzz = "^3.11.0"
+bespokelabs-curator = "^0.1.16"
+math-verify = "^0.3.2"
+
+[tool.poetry.group.dev.dependencies]
+twine = "^5.0.0"
+ruff = "^0.8.6"
+isort = "^5.13.2"
+pre-commit = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+curator-viewer = "bespokelabs.curator.viewer.__main__:main"
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "N",  # PEP8 naming convetions
+    "D"  # pydocstyle
+]
+ignore = [
+    "D100",  # Remove this eventually
+    "D103",  # Missing docstring in public function
+    "D101",  # Missing docstring in class
+    "C901",  # too complex
+    "W191",  # indentation contains tabs
+    "D401",  # imperative mood
+    "N806",  # uppercase variable names, for example, "API_KEY"
+    "E722",  # do not use bare except
+    "B018",  # useless expression
+    "B006",  # mutable defaults
+    "B007",  # unused loop variables
+    "B023",  # function definition not binding loop variable
+    "F841",  # unused variables
+    "D104",  # Missing docstring in public package
+    "D105",  # Missing docstring in magic method
+    "N801",  # Class name should use CapWords convention
+    "N818",  # Exception name should be named with Error suffix
+    "D205",  # 1 blank line required between summary line and description
+    "C416",  # Unnecessary list comprehension
+    "E501",  # Line too long
+    "C417",  # Unnecessary map() usage
+    "C401",  # Unnecessary generator
+    "D415"   # First line should end with period
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*" = ["D"]  # ignore tests for now
+"**/prompt_templates.py" = ["E501"]  # ignore line-too-long for prompt template files
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
