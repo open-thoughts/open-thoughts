@@ -46,8 +46,8 @@ We are fully open-source. Our [model weights](https://huggingface.co/open-though
 |OpenThinker-7B|✅|[✅](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k)|[✅](https://github.com/open-thoughts/open-thoughts) |
 |Bespoke-Stratos-7B|✅|[✅](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)|[✅](https://github.com/bespokelabsai/curator/tree/main/examples/bespoke-stratos-data-generation)|
 |DeepSeek-R1-Distill-Qwen-7B|✅|❌|❌|
-|gpt-4o-0513|-|❌|❌|❌|
-|o1-mini|-|❌|❌|❌|
+|gpt-4o-0513|❌|❌|❌|❌|
+|o1-mini|❌|❌|❌|❌|
 
 # Installation
 ```
