@@ -1,8 +1,27 @@
-# Open Thoughts
 
-Curating the best open reasoning datasets. A collaboration led by [bespokelabs](https://bespokelabs.ai/) and the [datacomp](https://www.datacomp.ai/) community.
+<!-- markdownlint-disable first-line-h1 -->
+<!-- markdownlint-disable html -->
+<!-- markdownlint-disable no-duplicate-header -->
 
-Our first goal is to curate a reasoning dataset to train state of the art small reasoning models that surpass [DeepSeek-R1-Distill-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [DeepSeek-R1-Distill-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) on math and code reasoning benchmarks. 
+<div align="center">
+  <img src="open_thoughts.png" width="60%" alt="Open Thoughts" />
+</div>
+<p align="center">
+  <a href="https://open-thoughts.ai">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Home-open--thoughts.ai-blue?style=flat&link=https%3A%2F%2Fopen-thoughts.ai">
+  </a>
+  <a href="https://huggingface.co/open-thoughts">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Open%20Thoughts-blue?color=ffc107&logoColor=white&style=flat&link=https%3A%2F%2Fhuggingface.co/open-thoughts">
+  </a>
+  <br>
+  Curating the best open reasoning datasets<br> 
+  A collaboration led by <a href="https://bespokelabs.ai/">bespokelabs</a> and the <a href="https://www.datacomp.ai/">datacomp</a> community
+
+</p>
+<hr>
+
+
+Our first goal is to curate a reasoning dataset to train state of the art small reasoning models that surpass [DeepSeek-R1-Distill-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [DeepSeek-R1-Distill-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) on math and code reasoning benchmarks.
 
 # News
 - **[2025/01/28]** 🎉 [Open Thoughts](https://www.open-thoughts.ai/) launches with [open-thoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/open-thoughts-114k) and [open-thinker-7B model](https://huggingface.co/open-thoughts/open-thinker-7B).
