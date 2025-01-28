@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from open_thoughts.code.combine import combine
@@ -24,29 +25,51 @@ def map_code_to_share_gpt(row):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true", default=False)
+    args = parser.parse_args()
+
     # Each of the subsets below is formatted in a different way, we first standardize them
     # into a common format and combine them.
-    subsets = {
-        "MatrixStudio/Codeforces-Python-Submissions": None,
-        "BAAI/TACO": None,
-        "codeparrot/apps": None,
-        "deepmind/code_contests": None,
-    }
+    # dry run only on apps
+
+    if args.dry_run:
+        subsets = {
+            "codeparrot/apps": None,
+        }
+    else:
+        subsets = {
+            "MatrixStudio/Codeforces-Python-Submissions": None,
+            "BAAI/TACO": None,
+            "codeparrot/apps": None,
+            "deepmind/code_contests": None,
+        }
+
     for subset in subsets:
         print(f"Standardizing {subset}...")
-        ds = standardize(subset, num_hf_proc_workers=os.cpu_count())
+        ds = standardize(subset, num_hf_proc_workers=os.cpu_count(), dry_run=args.dry_run)
         ds = ds.add_column("subset", [subset] * len(ds))
         subsets[subset] = ds
-    ds = combine(subsets)
 
-    # Deduplicate and decontaminate the dataset against benchmarks.
-    ds = deduplicate(ds, column="problem")
-    ds = decontaminate(ds, column="problem")
+    if args.dry_run:
+        ds = ds.take(3)
+    else:
+        ds = combine(subsets)
+        # Deduplicate and decontaminate the dataset against benchmarks.
+        ds = deduplicate(ds, column="problem")
+        ds = decontaminate(ds, column="problem")
 
     # Annotate the dataset with reasoning.
     ds = reason(ds)
-    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations")
 
-    ds = ds.add_column("domain", ["code"] * len(ds))
+    if args.dry_run:
+        print("======== CODE DATASET ========")
+        print(ds)
+        print(ds[0])
+        print("================")
+    else:
+        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations")
 
-    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code", private=os.environ.get("HF_PRIVATE"))
+        ds = ds.add_column("domain", ["code"] * len(ds))
+
+        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code", private=os.environ.get("HF_PRIVATE"))

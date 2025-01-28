@@ -292,12 +292,13 @@ def codecontests_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1
     return dataset
 
 
-def standardize(dataset_name_or_path: str, num_hf_proc_workers: int = 1) -> datasets.Dataset:
+def standardize(dataset_name_or_path: str, num_hf_proc_workers: int = 1, dry_run: bool = False) -> datasets.Dataset:
     """Process code dataset.
 
     Args:
         dataset_name_or_path (str): Dataset name or path.
         num_hf_proc_workers (int): Number of Hugging Face processing workers.
+        dry_run (bool): Whether to run on a small subset of the data.
 
     Returns:
         datasets.Dataset: Processed dataset.
@@ -307,6 +308,9 @@ def standardize(dataset_name_or_path: str, num_hf_proc_workers: int = 1) -> data
         split="all",
         trust_remote_code=True,
     )
+
+    if dry_run:
+        dataset = dataset.take(3)
 
     process_fn_map = {
         "code_contests": codecontests_process,

@@ -21,12 +21,24 @@ export CURATOR_DISABLE_CACHE=true
 
 ## Domains
 
-### Puzzle
+First run with the `--dry-run` flag to run on a small subset of the data.
 
-This will push the puzzle dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-puzzle`.
+### Math
+
+This will push the math dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-math`.
 
 ```
-python open_thoughts/puzzle/puzzle.py
+python open_thoughts/math/maths.py --dry-run
+```
+
+### Code
+
+This will push the code dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-code`.
+
+**WARNING**: This code when run without `--dry-run` uses the `deepmind/code_contests` [dataset](https://huggingface.co/datasets/deepmind/code_contests), which is >100 GB. Make sure you have enough disk space.
+
+```
+python open_thoughts/code/code.py --dry-run
 ```
 
 ### Science
@@ -34,27 +46,25 @@ python open_thoughts/puzzle/puzzle.py
 This will push the science dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-science`.
 
 ```
-python open_thoughts/science/science.py
+python open_thoughts/science/science.py --dry-run
 ```
 
-### Math
+### Puzzle
 
-This will push the math dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-math`.
-
-```
-python open_thoughts/math/maths.py
-```
-
-### Code
-
-This will push the code dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-code`.
-
-**WARNING**: This code uses the `deepmind/code_contests` [dataset](https://huggingface.co/datasets/deepmind/code_contests), which is >100 GB. Make sure you have enough disk space.
+This will push the puzzle dataset (along with intermediate datasets) to the HuggingFace dataset `{HF_ORG}/open-thoughts-puzzle`.
 
 ```
-python open_thoughts/code/code.py
+python open_thoughts/puzzle/puzzle.py --dry-run
 ```
 
+
+## Combine and verify
+
+After running the above without `--dry-run`, you can combine the datasets and verify them using:
+
+```
+python open_thoughts/mix.py
+```
 
 
 ## Source Datasets
