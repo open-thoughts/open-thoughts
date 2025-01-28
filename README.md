@@ -31,7 +31,7 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 # Results
 The numbers reported in the table below are evaluated with our open-source tool [Evalchemy](https://github.com/mlfoundations/Evalchemy).
 
-|                             | AIME2024 | MATH500 | GPQA-Diamond | LCBv2 Easy  | LCBv2 Medium  | LCBv2 Hard  | LCBv2 All  |
+|                             | AIME24   | MATH500 | GPQA-Diamond | LCBv2 Easy  | LCBv2 Medium  | LCBv2 Hard  | LCBv2 All  |
 | --------------------------- | -------- | ------- | ------------ | ----------- | ------------- | ----------- | ---------- |
 | OpenThinker-7B              | 43.3     | 83.0    | 42.4         | 75.3        | 28.6          | 6.5         | 39.9       |
 | Bespoke-Stratos-7B          | 16.6     | 79.6    | 38.9         | 71.4        | 25.2          | 0.8         | 35.8       |
