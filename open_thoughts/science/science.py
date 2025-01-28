@@ -32,10 +32,8 @@ if __name__ == "__main__":
     ds = ds.select_columns(["question", "domain", "topic", "sub_topic"])
     ds = ds.add_column("source", ["camel"] * len(ds))
 
-    if not args.dry_run:
-        ds = deduplicate(ds)
-        ds = decontaminate(ds)
-
+    ds = deduplicate(ds)
+    ds = decontaminate(ds)
     ds = reason(ds)
 
     if args.dry_run:
@@ -43,5 +41,5 @@ if __name__ == "__main__":
         print(ds)
         print(ds[0])
         print("================")
-    else:
-        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-science", private=os.environ.get("HF_PRIVATE"))
+
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-science{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))

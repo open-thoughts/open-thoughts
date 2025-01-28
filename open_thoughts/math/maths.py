@@ -22,10 +22,9 @@ if __name__ == "__main__":
 
     if args.dry_run:
         ds = ds.take(3)
-    else:
-        ds = deduplicate(ds)
-        ds = decontaminate(ds)
 
+    ds = deduplicate(ds)
+    ds = decontaminate(ds)
     ds = reason(ds)
 
     if args.dry_run:
@@ -33,5 +32,5 @@ if __name__ == "__main__":
         print(ds)
         print(ds[0])
         print("================")
-    else:
-        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-math", private=os.environ.get("HF_PRIVATE"))
+
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-math{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))

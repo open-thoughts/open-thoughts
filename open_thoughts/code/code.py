@@ -35,6 +35,8 @@ if __name__ == "__main__":
 
     if args.dry_run:
         subsets = {
+            "MatrixStudio/Codeforces-Python-Submissions": None,
+            "BAAI/TACO": None,
             "codeparrot/apps": None,
         }
     else:
@@ -49,15 +51,16 @@ if __name__ == "__main__":
         print(f"Standardizing {subset}...")
         ds = standardize(subset, num_hf_proc_workers=os.cpu_count(), dry_run=args.dry_run)
         ds = ds.add_column("subset", [subset] * len(ds))
-        subsets[subset] = ds
 
-    if args.dry_run:
-        ds = ds.take(3)
-    else:
-        ds = combine(subsets)
-        # Deduplicate and decontaminate the dataset against benchmarks.
-        ds = deduplicate(ds, column="problem")
-        ds = decontaminate(ds, column="problem")
+        if args.dry_run:
+            subsets[subset] = ds.take(3)
+        else:
+            subsets[subset] = ds
+
+    ds = combine(subsets, dry_run=args.dry_run)
+    # Deduplicate and decontaminate the dataset against benchmarks.
+    ds = deduplicate(ds, column="problem")
+    ds = decontaminate(ds, column="problem")
 
     # Annotate the dataset with reasoning.
     ds = reason(ds)
@@ -67,9 +70,7 @@ if __name__ == "__main__":
         print(ds)
         print(ds[0])
         print("================")
-    else:
-        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations")
 
-        ds = ds.add_column("domain", ["code"] * len(ds))
-
-        ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code", private=os.environ.get("HF_PRIVATE"))
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))
+    ds = ds.add_column("domain", ["code"] * len(ds))
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))
