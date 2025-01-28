@@ -30,13 +30,21 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 
 # Results
 
-|  | AIME24 | MATH500 | GPQA-D | LCB Easy | LCB Med | LCB Hard | Open Weights | Open Data | Open Code | 
-|--|--------|---------|--------|----------|---------|----------|--------------|-----------| --------- |
-|OpenThinker-7B|26.7|86|40.4|74.2|31.1|3.3|[✔](https://huggingface.co/open-thoughts/OpenThinker-7B)|[✔](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k)|[✔](https://github.com/open-thoughts/open-thoughts) |
-|Bespoke-Stratos-7B|20.0|82.0|37.8|71.4|25.2|1.6|[✔](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)|[✔](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)|[✔](https://github.com/bespokelabsai/curator/tree/main/examples/bespoke-stratos-data-generation)|
-|DeepSeek-R1-Distill-Qwen-7B|43.3|89.4|44.9|81.3|42.2|2.4|[✔](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)|❌|❌|
-|gpt-4o-0513|9.3|74.6|49.9|-|-|-|❌|❌|❌|
-|o1-mini|63.6|90.0|60.0|-|-|-|❌|❌|❌|
+|  | AIME24 | MATH500 | GPQA-D | LCB Easy | LCB Med | LCB Hard | 
+|--|--------|---------|--------|----------|---------|----------|
+|OpenThinker-7B|26.7|86|40.4|74.2|31.1|3.3|
+|Bespoke-Stratos-7B|20.0|82.0|37.8|71.4|25.2|1.6|
+|DeepSeek-R1-Distill-Qwen-7B|43.3|89.4|44.9|81.3|42.2|2.4|
+|gpt-4o-0513|9.3|74.6|49.9|-|-|-|
+|o1-mini|63.6|90.0|60.0|-|-|-|
+
+|  |Open Weights | Open Data | Open Code | 
+|--|--------------|-----------| --------- |
+|OpenThinker-7B|[✅](https://huggingface.co/open-thoughts/OpenThinker-7B)|[✅](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k)|[✅](https://github.com/open-thoughts/open-thoughts) |
+|Bespoke-Stratos-7B|[✅](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)|[✅](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)|[✅](https://github.com/bespokelabsai/curator/tree/main/examples/bespoke-stratos-data-generation)|
+|DeepSeek-R1-Distill-Qwen-7B|[✅](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)|❌|❌|
+|gpt-4o-0513|❌|❌|❌|
+|o1-mini|❌|❌|❌|
 
 # Installation
 ```
