@@ -87,7 +87,7 @@ Training and evaluation code coming soon.
 
 # Links
 - 📊 [Open Thoughts Launch Blog Post](https://www.open-thoughts.ai/blog/launch)
-- 🧠 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k).
+- 🧠 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k)
 - 🤖 [OpenThinker-7B model](https://huggingface.co/open-thoughts/OpenThinker-7B)
 - 📊 [Bespoke-Stratos Blog Post](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation)
 - 🧠 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)
