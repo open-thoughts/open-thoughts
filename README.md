@@ -58,12 +58,13 @@ Training and evaluation code coming soon.
 
 # About Us
 
-We are a team of researchers and engineers from Bespoke Labs, Stanford, University of California Berkeley, University of Washington, Juelich Supercomputing Center (JSC), LAION, UCLA, UNC Chapel Hill, and Toyota Research Institute united around building the best datasets (and thus the best models). See our previous works at [datacomp.ai](https://www.datacomp.ai/) and [mlfoundations](https://github.com/mlfoundations).
+We are a team of researchers and engineers from Bespoke Labs, Stanford, University of California Berkeley, University of Washington, Juelich Supercomputing Center (JSC), LAION, UCLA, UNC Chapel Hill, UT Austin, and Toyota Research Institute united around building the best datasets (and thus the best models). See our previous works at [datacomp.ai](https://www.datacomp.ai/) and [mlfoundations](https://github.com/mlfoundations).
 
 # Sponsors
 Open Thoughts is supported by 
 - [Bespoke Labs](https://www.bespokelabs.ai/)
 - [Lambda Labs](https://lambdalabs.com/)
-- [Texas Advanced Computing Center](https://tacc.utexas.edu/)
+- [IFML](https://www.ifml.institute/)
+- [NSF](https://www.nsf.gov/)
 - [Juelich Supercomputing Center](https://www.fz-juelich.de/en/ias/jsc)
 - [Toyota Research Institute](https://www.tri.global/)
