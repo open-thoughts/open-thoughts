@@ -15,7 +15,7 @@
   </a>
   <br>
   <i>Curating the best open reasoning datasets</i><br> 
-  A collaboration led by <a href="https://bespokelabs.ai/">bespokelabs</a> and the <a href="https://www.datacomp.ai/">datacomp</a> community
+  A collaboration led by <a href="https://bespokelabs.ai/">Bespoke Labs</a> and the <a href="https://www.datacomp.ai/">DataComp</a> community
 
 </p>
 <hr>
