@@ -1,9 +1,7 @@
 # Open Thoughts
-*Curating the best open reasoning datasets. 
+**Curating the best open reasoning datasets.**  A [bespokelabs](https://bespokelabs.ai/) and [datacomp](https://www.datacomp.ai/) effort.
 
-A [bespokelabs](https://bespokelabs.ai/) and [datacomp](https://www.datacomp.ai/) effort*
-
-Our first **goal** is to curate a reasoning dataset to train a model that outperforms DeepSeek-R1-Distill [32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B).
+Our first goal is to curate a reasoning dataset to train a model that outperforms DeepSeek-R1-Distill [32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B).
 
 # News
 - **[2025/01/XX]** 🎉 Launch of the *Open Thoughts* project and [OpenThoughts-114k dataset](https://huggingface.co/mlfoundations-dev)
