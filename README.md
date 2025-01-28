@@ -35,7 +35,10 @@ export HF_PRIVATE=false
 # Data Generation
 More instructions in [open_thoughts/README.md](open_thoughts/README.md).
 
-![data diagram](diagram.png)
+<picture>
+    <source media="(prefers-color-scheme: light)" width="100%" srcset="diagram.png">
+    <img alt="Data Curation Recipe" width="100%" src="diagram_dark.png">
+</picture>
 
 Currently, we are generating data for the following domains:
 1. Code
