@@ -60,10 +60,10 @@ python open_thoughts/puzzle/puzzle.py --dry-run
 
 ## Combine and verify
 
-After running the above without `--dry-run`, you can combine the datasets and verify them using:
+After running the above, you can combine the datasets and run verification using:
 
 ```
-python open_thoughts/mix.py
+python open_thoughts/mix.py --dry-run
 ```
 
 
