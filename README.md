@@ -35,11 +35,15 @@ export HF_PRIVATE=false
 # Data Generation
 More instructions in [open_thoughts/README.md](open_thoughts/README.md).
 
+![data diagram](diagram.png)
+
 Currently, we are generating data for the following domains:
 1. Code
 2. Math
 3. Science
 4. Puzzle
+
+
 
 # Training and Evaluation
 Training and evaluation code coming soon.
