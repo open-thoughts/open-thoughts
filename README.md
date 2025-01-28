@@ -1,5 +1,5 @@
 # Open Thoughts
-**Curating the best open reasoning datasets.**  A [bespokelabs](https://bespokelabs.ai/) and [datacomp](https://www.datacomp.ai/) effort.
+**Curating the best open reasoning datasets.**  A [bespokelabs](https://bespokelabs.ai/) and [datacomp](https://www.datacomp.ai/) community effort.
 
 Our first goal is to curate a reasoning dataset to train a model that outperforms DeepSeek-R1-Distill [32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B).
 
@@ -33,12 +33,6 @@ export HF_PRIVATE=false
 ```
 
 # Data Generation
-More instructions in [open_thoughts/README.md](open_thoughts/README.md).
-
-<picture>
-    <source media="(prefers-color-scheme: light)" width="100%" srcset="diagram.png">
-    <img alt="Data Curation Recipe" width="100%" src="diagram_dark.png">
-</picture>
 
 Currently, we are generating data for the following domains:
 1. Code
@@ -46,6 +40,13 @@ Currently, we are generating data for the following domains:
 3. Science
 4. Puzzle
 
+The recipe is outlined below:
+<picture>
+    <source media="(prefers-color-scheme: light)" width="100%" srcset="diagram.png">
+    <img alt="Data Curation Recipe" width="100%" src="diagram_dark.png">
+</picture>
+
+More instructions are in [open_thoughts/README.md](open_thoughts/README.md).
 
 
 # Training and Evaluation
@@ -65,7 +66,7 @@ Training and evaluation code coming soon.
 
 # About Us
 
-We are a team of researchers and engineers from Bespoke Labs, Stanford, University of California Berkeley, University of Washington, Juelich Supercomputing Center (JSC), LAION, UCLA, UNC Chapel Hill, UT Austin, and Toyota Research Institute united around building the best datasets (and thus the best models). See our previous works at [datacomp.ai](https://www.datacomp.ai/) and [mlfoundations](https://github.com/mlfoundations).
+We are a team of researchers and engineers from [Bespoke Labs](https://www.bespokelabs.ai/), Stanford, University of California Berkeley, University of Washington, Juelich Supercomputing Center (JSC), LAION, UCLA, UNC Chapel Hill, UT Austin, and Toyota Research Institute united around building the best datasets (and thus the best models). See our previous works at [datacomp.ai](https://www.datacomp.ai/) and [mlfoundations](https://github.com/mlfoundations).
 
 # Sponsors
 Open Thoughts is supported by 
