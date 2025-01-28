@@ -1,5 +1,5 @@
 # Open Thoughts
-*Curating the best open reasoning datasets. Work in progress.*
+*Curating the best open reasoning datasets. A [bespokelabs.ai](https://bespokelabs.ai/) and [datacomp.ai](https://www.datacomp.ai/) effort*
 
 Our first **goal** is to curate a reasoning dataset to train a model that outperforms DeepSeek-R1-Distill [32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B).
 
