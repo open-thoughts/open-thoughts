@@ -92,7 +92,6 @@ We are a team of researchers and engineers from [Bespoke Labs](https://www.bespo
 Open Thoughts is supported by 
 - [Bespoke Labs](https://www.bespokelabs.ai/)
 - [Lambda Labs](https://lambdalabs.com/)
-- [IFML](https://www.ifml.institute/)
-- [NSF](https://www.nsf.gov/)
+- [NSF IFML](https://www.ifml.institute/)
 - [Juelich Supercomputing Center](https://www.fz-juelich.de/en/ias/jsc)
 - [Toyota Research Institute](https://www.tri.global/)
