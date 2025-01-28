@@ -101,5 +101,6 @@ Open Thoughts is supported by
 - [Bespoke Labs](https://www.bespokelabs.ai/)
 - [Lambda Labs](https://lambdalabs.com/)
 - [NSF IFML](https://www.ifml.institute/)
+- [UT Austin Machine Learning Lab](https://ml.utexas.edu/)
 - [Juelich Supercomputing Center](https://www.fz-juelich.de/en/ias/jsc)
 - [Toyota Research Institute](https://www.tri.global/)
