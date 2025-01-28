@@ -20,21 +20,23 @@
 </p>
 <hr>
 
+Our first goal is to curate a reasoning dataset to train state-of-the-art small reasoning models that surpass [DeepSeek-R1-Distill-Qwen-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) on math and code reasoning benchmarks.
 
-Our first goal is to curate a reasoning dataset to train state of the art small reasoning models that surpass [DeepSeek-R1-Distill-32B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B) and [DeepSeek-R1-Distill-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) on math and code reasoning benchmarks.
 
 # News
-- **[2025/01/28]** 🎉 [Open Thoughts](https://www.open-thoughts.ai/) launches with [open-thoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/open-thoughts-114k) and [open-thinker-7B model](https://huggingface.co/open-thoughts/open-thinker-7B).
-- **[2025/01/22]** 🎉 We [release](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation) our [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B) 
+- **[2025/01/28]** 🎉 [Open Thoughts](https://www.open-thoughts.ai/) launches with [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) and [OpenThinker-7B model](https://huggingface.co/open-thoughts/OpenThinker-7B).
+- **[2025/01/27]** 🎉 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) is a top trending dataset on Hugging Face.
+- **[2025/01/22]** 🎉 We [release](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation) our [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
 
-# Links
-- 📊 [Open Thoughts Launch Blog Post](https://www.openthoughts.ai/blog/launch)
-- 🧠 [open-thoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/open-thoughts-114k)
-- 🤖 [open-thinker-7B model](https://huggingface.co/open-thoughts/open-thinker-7B)
-- 📊 [Bespoke-Stratos Blog Post](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation)
-- 🧠 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)
-- 🤖[Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
-- 🤖 [Bespoke-Stratos-7B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)
+# Results
+
+|  | AIME24 | MATH500 | GPQA-D | LCB Easy | LCB Med | LCB Hard | Open Weights | Open Data | Open Code | 
+|--|--------|---------|--------|----------|---------|----------|--------------|-----------| --------- |
+|OpenThinker-7B|26.7|86|40.4|74.2|31.1|3.3|[✔](https://huggingface.co/open-thoughts/OpenThinker-7B)|[✔](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k)|[✔](https://github.com/open-thoughts/open-thoughts) |
+|Bespoke-Stratos-7B|20.0|82.0|37.8|71.4|25.2|1.6|[✔](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)|[✔](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)|[✔](https://github.com/bespokelabsai/curator/tree/main/examples/bespoke-stratos-data-generation)|
+|DeepSeek-R1-Distill-Qwen-7B|43.3|89.4|44.9|81.3|42.2|2.4|[✔](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)|❌|❌|
+|gpt-4o-0513|9.3|74.6|49.9|-|-|-|❌|❌|❌|
+|o1-mini|63.6|90.0|60.0|-|-|-|❌|❌|❌|
 
 # Installation
 ```
@@ -72,17 +74,15 @@ More instructions are in [open_thoughts/README.md](open_thoughts/README.md).
 # Training and Evaluation
 Training and evaluation code coming soon.
 
-# Results
-
-||Bespoke-Stratos-7B|Qwen2.5-7B-Instruct|DeepSeek-R1-Distill-Qwen-7B (Ours / Reported)| Open-Thinker-7B |
-|---|---|---|---|--- |
-|AIME2024|20.0|10.0|43.3 / 55.5| ? |
-|MATH500|82.0|74.2|89.4 / 92.8| ? |
-|GPQA-Diamond|37.8|33.3|44.9 / 49.1| ? |
-|LiveCodeBench v2 Easy|71.4|65.9|81.3 /-| ? |
-|LiveCodeBench v2 Medium|25.5|18.9|42.2 / -| ? |
-|LiveCodeBench v2 Hard|1.6|3.3|2.4 / - | ? |
-|LiveCodeBench v2 All|36.1|31.9|46.6 / -  | ? |
+# Links
+- 📊 [Open Thoughts Launch Blog Post](https://www.open-thoughts.ai/blog/launch)
+- 📊 [Open Thoughts GitHub Repository](https://github.com/open-thoughts/open-thoughts)
+- 🧠 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k).
+- 🤖 [OpenThinker-7B model](https://huggingface.co/open-thoughts/OpenThinker-7B)
+- 📊 [Bespoke-Stratos Blog Post](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation)
+- 🧠 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)
+- 🤖 [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
+- 🤖 [Bespoke-Stratos-7B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)
 
 # About Us
 
