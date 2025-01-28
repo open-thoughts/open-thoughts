@@ -105,4 +105,4 @@ Open Thoughts is supported by
 - [NSF IFML](https://www.ifml.institute/)
 - [UT Austin Machine Learning Lab](https://ml.utexas.edu/)
 - [Juelich Supercomputing Center](https://www.fz-juelich.de/en/ias/jsc)
-- [Toyota Research Institute](https://www.tri.global/)
+- [Toyota Research Institute]
