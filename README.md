@@ -4,7 +4,7 @@
 <!-- markdownlint-disable no-duplicate-header -->
 
 <div align="center">
-  <img src="open_thoughts.png" width="60%" alt="Open Thoughts" />
+  <img src="open_thoughts.png" width="60%" alt="Open Thoughts GitHub Repository" />
 </div>
 <p align="center">
   <a href="https://open-thoughts.ai">
@@ -14,7 +14,7 @@
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Open%20Thoughts-blue?color=ffc107&logoColor=white&style=flat&link=https%3A%2F%2Fhuggingface.co/open-thoughts">
   </a>
   <br>
-  Curating the best open reasoning datasets<br> 
+  <i>Curating the best open reasoning datasets</i><br> 
   A collaboration led by <a href="https://bespokelabs.ai/">bespokelabs</a> and the <a href="https://www.datacomp.ai/">datacomp</a> community
 
 </p>
