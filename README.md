@@ -28,7 +28,7 @@ Our first goal is to curate a reasoning dataset to train state of the art small 
 - **[2025/01/22]** 🎉 We [release](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation) our [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B) 
 
 # Links
-- 📊 Open Thoughts Launch Blog Post
+- 📊 [Open Thoughts Launch Blog Post](https://www.openthoughts.ai/blog/launch)
 - 🧠 [open-thoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/open-thoughts-114k)
 - 🤖 [open-thinker-7B model](https://huggingface.co/open-thoughts/open-thinker-7B)
 - 📊 [Bespoke-Stratos Blog Post](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation)
