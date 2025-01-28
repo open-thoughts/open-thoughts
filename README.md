@@ -29,6 +29,7 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 - **[2025/01/22]** 🎉 We [release](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation) our [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
 
 # Results
+The numbers reported in the table below are independently evaluated with our open-source tool [Evalchemy](https://github.com/mlfoundations/Evalchemy).
 
 |                             | AIME2024 | MATH500 | GPQA-Diamond | LCB Easy v2 | LCB Medium v2 | LCB Hard v2 | LCB All v2 |
 | --------------------------- | -------- | ------- | ------------ | ----------- | ------------- | ----------- | ---------- |
