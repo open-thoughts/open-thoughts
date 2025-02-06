@@ -98,10 +98,10 @@ Training and evaluation code coming soon.
 
 # Citation
 ```
-@misc{Open-Thoughts,
-  author = {Marten, Ryan and Guha, Etash and Vu, Trung and Nezhurina, Marianna and Keh, Sedrick and Raoof, Negin and Smyrnis, George and Mercat, Jean and Bansal, Hritik and Kahn, Zaid, Merrill, Mike and Jitsev, Jenia and Dimakis, Alex and Sathiamoorthy, Mahesh and Schmidt, Ludwig},
+@misc{Open Thoughts,
+  author = {Open Thoughts Team},
   month = jan,
-  title = {{Open-Thoughts}},
+  title = {{Open Thoughts}},
   year = {2025}
 }
 ```
