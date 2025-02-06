@@ -96,6 +96,16 @@ Training and evaluation code coming soon.
 - 🤖 [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
 - 🤖 [Bespoke-Stratos-7B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)
 
+# Citation
+```
+@misc{Open-Thoughts,
+  author = {Marten, Ryan and Vu, Trung and Nezhurina, Marianna and Keh, Sedrick and Raoof, Negin and Smyrnis, George and Guha, Etash and Mercat, Jean and Bansal, Hritik and Kahn, Zaid, Merrill, Mike and Jitsev, Jenia and Dimakis, Alex and Sathiamoorthy, Mahesh and Schmidt, Ludwig},
+  month = jan,
+  title = {{Open-Thoughts}},
+  year = {2025}
+}
+```
+
 # About Us
 
 We are a team of researchers and engineers from [Bespoke Labs](https://www.bespokelabs.ai/), Stanford, University of California Berkeley, University of Washington, Juelich Supercomputing Center (JSC), LAION, UCLA, UNC Chapel Hill, UT Austin, and Toyota Research Institute united around building the best datasets (and thus the best models). See our previous works at [datacomp.ai](https://www.datacomp.ai/) and [mlfoundations](https://github.com/mlfoundations).
