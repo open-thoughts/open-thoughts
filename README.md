@@ -35,11 +35,13 @@ The numbers reported in the table below are evaluated with our open-source tool 
 
 |                             | AIME24   | MATH500 | GPQA-Diamond | LCBv2 Easy  | LCBv2 Medium  | LCBv2 Hard  | LCBv2 All  |
 | --------------------------- | -------- | ------- | ------------ | ----------- | ------------- | ----------- | ---------- |
-| OpenThinker-7B              | 43.3     | 83.0    | 42.4         | 75.3        | 28.6          | 6.5         | 39.9       |
-| Bespoke-Stratos-7B          | 16.6     | 79.6    | 38.9         | 71.4        | 25.2          | 0.8         | 35.8       |
+| OpenThinker-7B              | 31.3     | 83.0    | 42.4         | 75.3        | 28.6          | 6.5         | 39.9       |
+| Bespoke-Stratos-7B          | 22.7     | 79.6    | 38.9         | 71.4        | 25.2          | 0.8         | 35.8       |
 | DeepSeek-R1-Distill-Qwen-7B | 60       | 88.2    | 46.9         | 79.7        | 45.1          | 14.6        | 50.1       |
-| gpt-4o-0513                 | 10       | 75.8    | 46.5         | 87.4        | 42.7          | 8.9         | 50.5       |
-| o1-mini                     | 63       | 85.6    | 60           | 92.8        | 74.7          | 39.8        | 72.8       |
+| gpt-4o-0513                 | 8.6      | 75.8    | 46.5         | 87.4        | 42.7          | 8.9         | 50.5       |
+| o1-mini                     | 64.0     | 85.6    | 60           | 92.8        | 74.7          | 39.8        | 72.8       |
+
+Note: The AIME24 dataset has a small sample size, resulting in high variance in evaluation accuracy. To mitigate this, we updated the code to compute the average score over five evaluation runs with different seeds. No system prompt is used, the maximum token length is set to 32,768, and temperature is 0.7.
 
 We are fully open-source. Our [model weights](https://huggingface.co/open-thoughts), [datasets](https://huggingface.co/open-thoughts), [data generation code](https://github.com/open-thoughts/open-thoughts), [evaluation code](https://github.com/mlfoundations/Evalchemy), and [training code](https://github.com/hiyouga/LLaMA-Factory) are all publicly available. 
 
