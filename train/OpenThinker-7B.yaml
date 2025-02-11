@@ -1,0 +1,40 @@
+### model
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+deepspeed: train/zero3_offload.json  
+
+messages: conversations
+formatting: sharegpt
+role_tag: from
+content_tag: value
+user_tag: user
+assistant_tag: assistant
+
+### dataset
+dataset: open-thoughts/OpenThoughts-114k 
+template: qwen25
+cutoff_len: 16384
+max_samples: 1000000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: saves/OpenThinker-7B
+logging_steps: 1
+save_steps: 100
+plot_loss: true
+
+### train
+global_batch_size: 96
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 3
+learning_rate: 1.0e-5
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
