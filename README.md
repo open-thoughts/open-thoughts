@@ -24,20 +24,24 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 
 
 # News
+- **[2025/02/02]** 🎉 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) is the #1 trending dataset on Hugging Face.
+- **[2025/01/30]** 🎉 Reasoning benchmarks are added to [Evalchemy](https://github.com/mlfoundations/Evalchemy) and [compared](https://www.open-thoughts.ai/blog/measure) to publicly reported scores.
 - **[2025/01/28]** 🎉 [Open Thoughts](https://www.open-thoughts.ai/) launches with [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) and [OpenThinker-7B model](https://huggingface.co/open-thoughts/OpenThinker-7B).
-- **[2025/01/27]** 🎉 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) is a top trending dataset on Hugging Face.
-- **[2025/01/22]** 🎉 We [release](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation) our [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
+- **[2025/01/27]** 🎉 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) is the #2 trending dataset on Hugging Face.
+- **[2025/01/22]** 🎉 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k) and [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B) are [announced](https://www.bespokelabs.ai/blog/bespoke-stratos-the-unreasonable-effectiveness-of-reasoning-distillation).
 
 # Results
 The numbers reported in the table below are evaluated with our open-source tool [Evalchemy](https://github.com/mlfoundations/Evalchemy).
 
 |                             | AIME24   | MATH500 | GPQA-Diamond | LCBv2 Easy  | LCBv2 Medium  | LCBv2 Hard  | LCBv2 All  |
 | --------------------------- | -------- | ------- | ------------ | ----------- | ------------- | ----------- | ---------- |
-| OpenThinker-7B              | 43.3     | 83.0    | 42.4         | 75.3        | 28.6          | 6.5         | 39.9       |
-| Bespoke-Stratos-7B          | 16.6     | 79.6    | 38.9         | 71.4        | 25.2          | 0.8         | 35.8       |
+| OpenThinker-7B              | 31.3     | 83.0    | 42.4         | 75.3        | 28.6          | 6.5         | 39.9       |
+| Bespoke-Stratos-7B          | 22.7     | 79.6    | 38.9         | 71.4        | 25.2          | 0.8         | 35.8       |
 | DeepSeek-R1-Distill-Qwen-7B | 60       | 88.2    | 46.9         | 79.7        | 45.1          | 14.6        | 50.1       |
-| gpt-4o-0513                 | 10       | 75.8    | 46.5         | 87.4        | 42.7          | 8.9         | 50.5       |
-| o1-mini                     | 63       | 85.6    | 60           | 92.8        | 74.7          | 39.8        | 72.8       |
+| gpt-4o-0513                 | 8.6      | 75.8    | 46.5         | 87.4        | 42.7          | 8.9         | 50.5       |
+| o1-mini                     | 64.0     | 85.6    | 60           | 92.8        | 74.7          | 39.8        | 72.8       |
+
+Note: The AIME24 dataset has a small sample size, resulting in high variance in evaluation accuracy. To mitigate this, we updated the code to compute the average score over five evaluation runs with different seeds. No system prompt is used, the maximum token length is set to 32,768, and temperature is 0.7.
 
 We are fully open-source. Our [model weights](https://huggingface.co/open-thoughts), [datasets](https://huggingface.co/open-thoughts), [data generation code](https://github.com/open-thoughts/open-thoughts), [evaluation code](https://github.com/mlfoundations/Evalchemy), and [training code](https://github.com/hiyouga/LLaMA-Factory) are all publicly available. 
 
@@ -93,6 +97,16 @@ Training and evaluation code coming soon.
 - 🧠 [Bespoke-Stratos-17k dataset](https://huggingface.co/datasets/bespokelabs/Bespoke-Stratos-17k)
 - 🤖 [Bespoke-Stratos-32B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-32B)
 - 🤖 [Bespoke-Stratos-7B model](https://huggingface.co/bespokelabs/Bespoke-Stratos-7B)
+
+# Citation
+```
+@misc{Open Thoughts,
+  author = {Open Thoughts Team},
+  month = jan,
+  title = {{Open Thoughts}},
+  year = {2025}
+}
+```
 
 # About Us
 
