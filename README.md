@@ -38,9 +38,9 @@ The numbers reported in the table below are evaluated with our open-source tool 
 | Model Name                   |  AIME24 | AIME25 I | MATH500 | GPQA-Diamond | LCBv2 All|
 | ---------------------------- | ------ | -------- | ------- | ------ | ----- |
 | OpenThinker-32B              |  66.0   | 53.3     | 90.6    | 61.6   | 68.9  |
-| LIMO-32B                     |  56.7   | 49.3     | 86.6    | 58.1   | \-    |
+| LIMO-32B                     |  56.7   | 49.3     | 86.6    | 58.1   | 60.0  |
 | s1-32B                       |  36.0   | 25.3     | 84.8    | 50.5   | 40.9  |
-| s1.1-32B                     |  64.7   | 49.3     | 89.0    | 60.1   | \-    |
+| s1.1-32B                     |  64.7   | 49.3     | 89.0    | 60.1   | 65.5  |
 | DeepSeek-R1-Distill-Qwen-32B |  76.7   | 55.9     | 89.4    | 57.6   | 71.2  |
 
 [OpenThinker-7B](https://huggingface.co/open-thoughts/OpenThinker-7B) vs other 7B models:
