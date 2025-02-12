@@ -24,7 +24,7 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 
 
 # News
-- **[2025/02/12]** 🎉 [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) is the current best open-data reasoning model. More details in this [blog post](https://www.open-thoughts.ai/blog/scale). 
+- **[2025/02/12]** 🎉 We release [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B), the [best open-data reasoning model](https://www.open-thoughts.ai/blog/scale).
 - **[2025/02/02]** 🎉 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) is the #1 trending dataset on Hugging Face.
 - **[2025/01/30]** 🎉 Reasoning benchmarks are added to [Evalchemy](https://github.com/mlfoundations/Evalchemy) and [compared](https://www.open-thoughts.ai/blog/measure) to publicly reported scores.
 - **[2025/01/28]** 🎉 [Open Thoughts](https://www.open-thoughts.ai/) launches with [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) and [OpenThinker-7B model](https://huggingface.co/open-thoughts/OpenThinker-7B).
@@ -35,13 +35,13 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 The numbers reported in the table below are evaluated with our open-source tool [Evalchemy](https://github.com/mlfoundations/Evalchemy).
 
 [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) vs other 32B models:
-| Model Name                   | Dataset Size | AIME24 | AIME25 I | MATH500 | GPQA-D | LCBv2 |
-| ---------------------------- | ------------ | ------ | -------- | ------- | ------ | ----- |
-| LIMO-32B                     | 0.8k         | 56.7   | 49.3     | 86.6    | 58.1   | \-    |
-| s1-32B                       | 1k           | 36.0   | 25.3     | 84.8    | 50.5   | 40.9  |
-| s1.1-32B                     | 1k           | 64.7   | 49.3     | 89.0    | 60.1   | \-    |
-| OpenThinker-32B              | 114k         | 66.0   | 53.3     | 90.6    | 61.6   | 68.9  |
-| DeepSeek-R1-Distill-Qwen-32B | 800k         | 76.7   | 55.9     | 89.4    | 57.6   | 71.2  |
+| Model Name                   |  AIME24 | AIME25 I | MATH500 | GPQA-Diamond | LCBv2 All|
+| ---------------------------- | ------ | -------- | ------- | ------ | ----- |
+| OpenThinker-32B              |  66.0   | 53.3     | 90.6    | 61.6   | 68.9  |
+| LIMO-32B                     |  56.7   | 49.3     | 86.6    | 58.1   | \-    |
+| s1-32B                       |  36.0   | 25.3     | 84.8    | 50.5   | 40.9  |
+| s1.1-32B                     |  64.7   | 49.3     | 89.0    | 60.1   | \-    |
+| DeepSeek-R1-Distill-Qwen-32B |  76.7   | 55.9     | 89.4    | 57.6   | 71.2  |
 
 [OpenThinker-7B](https://huggingface.co/open-thoughts/OpenThinker-7B) vs other 7B models:
 |                             | AIME24   | MATH500 | GPQA-Diamond | LCBv2 Easy  | LCBv2 Medium  | LCBv2 Hard  | LCBv2 All  |
