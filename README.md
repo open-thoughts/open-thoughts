@@ -24,6 +24,7 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 
 
 # News
+- **[2025/02/16]** 🎉 [OpenThinker on Ollama](https://ollama.com/library/openthinker) has 500k downloads.
 - **[2025/02/12]** 🎉 We release [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B), the [best open-data reasoning model](https://www.open-thoughts.ai/blog/scale).
 - **[2025/02/02]** 🎉 [OpenThoughts-114k dataset](https://huggingface.co/datasets/open-thoughts/OpenThoughts-114k) is the #1 trending dataset on Hugging Face.
 - **[2025/01/30]** 🎉 Reasoning benchmarks are added to [Evalchemy](https://github.com/mlfoundations/Evalchemy) and [compared](https://www.open-thoughts.ai/blog/measure) to publicly reported scores.
