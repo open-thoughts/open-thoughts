@@ -1,6 +1,6 @@
-<!-- markdownlint-disable first-line-h1 -->
-<!-- markdownlint-disable html -->
-<!-- markdownlint-disable no-duplicate-header -->
+<!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD024 -->
 
 <div align="center">
   <img src="open_thoughts.png" width="60%" alt="Open Thoughts GitHub Repository" />

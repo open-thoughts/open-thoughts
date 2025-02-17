@@ -1,5 +1,4 @@
-<!-- markdownlint-disable first-line-h1 -->
-<!-- markdownlint-disable no-duplicate-heading -->
+<!-- markdownlint-disable MD024 -->
 
 # Data Generation
 
