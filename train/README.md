@@ -1,6 +1,6 @@
 # Training
 
-We train [OpenThinker-7B](https://huggingface.co/open-thoughts/OpenThinker-7B) and [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) using a modified version of [LLaMa-Factory](https://github.com/hiyouga/LLaMA-Factory).
+We train [OpenThinker-7B](https://huggingface.co/open-thoughts/OpenThinker-7B) and [OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) using [LLaMa-Factory](https://github.com/hiyouga/LLaMA-Factory).
 
 We provide our training config files with the relevant hyperparameters:
 - [`OpenThinker-7B.yaml`](./OpenThinker-7B.yaml)
