@@ -4,9 +4,7 @@ from math_verify.parser import ExprExtractionConfig, LatexExtractionConfig
 llm_judge = False
 gold_is_latex = True
 verify_func = math_metric(
-    gold_extraction_target=(
-        LatexExtractionConfig() if gold_is_latex else ExprExtractionConfig(),
-    ),
+    gold_extraction_target=(LatexExtractionConfig() if gold_is_latex else ExprExtractionConfig(),),
     pred_extraction_target=(ExprExtractionConfig(), LatexExtractionConfig()),
     aggregation_function=max,
     fallback_mode="first_match",
@@ -21,9 +19,7 @@ def validate_solution(row):
     grade = 0
     try:
         # Use the verification function
-        grade, extracted_answers = verify_func(
-            [row["ground_truth_solution"]], [row["deepseek_solution"]]
-        )
+        grade, extracted_answers = verify_func([row["ground_truth_solution"]], [row["deepseek_solution"]])
 
         if extracted_answers is None:
             extracted_answers = ""  # Use empty string instead of None

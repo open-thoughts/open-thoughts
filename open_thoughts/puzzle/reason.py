@@ -34,9 +34,6 @@ def reason(ds):
     reasoner = Reasoner(
         model_name="deepseek-reasoner",
         generation_params={"temp": 0.0, "max_tokens": 8_000},
-        backend_params={
-            "max_requests_per_minute": 500,
-            "max_tokens_per_minute": 100_000_000,
-        },
+        backend_params={"max_requests_per_minute": 500, "max_tokens_per_minute": 100_000_000},
     )
     return reasoner(ds)

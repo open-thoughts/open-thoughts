@@ -11,9 +11,7 @@ def analyze_token_lengths(dataset_name):
     # Get the directory paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     dev_dir = os.path.join(script_dir, "dev")
-    lengths_file = os.path.join(
-        dev_dir, f"{dataset_name.replace('/', '_')}_token_lengths.json"
-    )
+    lengths_file = os.path.join(dev_dir, f"{dataset_name.replace('/', '_')}_token_lengths.json")
 
     # Try to load existing token lengths
     if os.path.exists(lengths_file):
@@ -28,59 +26,31 @@ def analyze_token_lengths(dataset_name):
         deepseek_reasoning = dataset["reasoning"]
         # Calculate token lengths if file doesn't exist
         print("Calculating token lengths")
-        solution_token_lengths = [
-            len(tiktoken.encoding_for_model("gpt-4o-mini").encode(solution))
-            for solution in deepseek_solutions
-        ]
-        reasoning_token_lengths = [
-            len(tiktoken.encoding_for_model("gpt-4o-mini").encode(reasoning))
-            for reasoning in deepseek_reasoning
-        ]
+        solution_token_lengths = [len(tiktoken.encoding_for_model("gpt-4o-mini").encode(solution)) for solution in deepseek_solutions]
+        reasoning_token_lengths = [len(tiktoken.encoding_for_model("gpt-4o-mini").encode(reasoning)) for reasoning in deepseek_reasoning]
 
         # Save the lengths
         os.makedirs(dev_dir, exist_ok=True)
         with open(lengths_file, "w") as f:
-            json.dump(
-                {
-                    "solution_lengths": solution_token_lengths,
-                    "reasoning_lengths": reasoning_token_lengths,
-                },
-                f,
-            )
+            json.dump({"solution_lengths": solution_token_lengths, "reasoning_lengths": reasoning_token_lengths}, f)
 
     print("Calculating statistics")
-    print(
-        f"Mean solution token length: {sum(solution_token_lengths) / len(solution_token_lengths)}"
-    )
-    print(
-        f"Median solution token length: {sorted(solution_token_lengths)[len(solution_token_lengths) // 2]}"
-    )
+    print(f"Mean solution token length: {sum(solution_token_lengths) / len(solution_token_lengths)}")
+    print(f"Median solution token length: {sorted(solution_token_lengths)[len(solution_token_lengths) // 2]}")
     print(f"Max solution token length: {max(solution_token_lengths)}")
     print(f"Min solution token length: {min(solution_token_lengths)}")
 
-    print(
-        f"Mean reasoning token length: {sum(reasoning_token_lengths) / len(reasoning_token_lengths)}"
-    )
-    print(
-        f"Median reasoning token length: {sorted(reasoning_token_lengths)[len(reasoning_token_lengths) // 2]}"
-    )
+    print(f"Mean reasoning token length: {sum(reasoning_token_lengths) / len(reasoning_token_lengths)}")
+    print(f"Median reasoning token length: {sorted(reasoning_token_lengths)[len(reasoning_token_lengths) // 2]}")
     print(f"Max reasoning token length: {max(reasoning_token_lengths)}")
     print(f"Min reasoning token length: {min(reasoning_token_lengths)}")
 
-    long_solution_indices = [
-        i for i, length in enumerate(solution_token_lengths) if length > 3000
-    ]
+    long_solution_indices = [i for i, length in enumerate(solution_token_lengths) if length > 3000]
     print(f"\nNumber of solutions over 3k tokens: {len(long_solution_indices)}")
 
     max_token_length = max(solution_token_lengths)
-    max_length_indices = [
-        i
-        for i, length in enumerate(solution_token_lengths)
-        if length == max_token_length
-    ]
-    print(
-        f"\nNumber of solutions with max token length ({max_token_length}): {len(max_length_indices)}"
-    )
+    max_length_indices = [i for i, length in enumerate(solution_token_lengths) if length == max_token_length]
+    print(f"\nNumber of solutions with max token length ({max_token_length}): {len(max_length_indices)}")
 
     # Get the directory of the current script
     dev_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dev")
@@ -95,37 +65,25 @@ def analyze_token_lengths(dataset_name):
 
     # Save plot
     plot_prefix = dataset_name.replace("/", "_")
-    plt.savefig(
-        os.path.join(dev_dir, f"{plot_prefix}_solution_length_distribution.png")
-    )
+    plt.savefig(os.path.join(dev_dir, f"{plot_prefix}_solution_length_distribution.png"))
     plt.close()
 
     # Create histogram of token lengths
     combined_token_lengths = []
-    for solution_tokens, reasoning_tokens in zip(
-        solution_token_lengths, reasoning_token_lengths
-    ):
+    for solution_tokens, reasoning_tokens in zip(solution_token_lengths, reasoning_token_lengths):
         combined_token_lengths.append(solution_tokens + reasoning_tokens)
 
     # Count number of examples exceeding 16384 tokens
     num_over_16k = sum(1 for length in combined_token_lengths if length > 16384)
     print(f"\nNumber of examples with combined token length over 16384: {num_over_16k}")
-    print(
-        f"Percentage of dataset over 16384 tokens: {(num_over_16k / len(combined_token_lengths)) * 100:.2f}%"
-    )
+    print(f"Percentage of dataset over 16384 tokens: {(num_over_16k / len(combined_token_lengths)) * 100:.2f}%")
 
     num_over_32k = sum(1 for length in combined_token_lengths if length > 32768)
     print(f"\nNumber of examples with combined token length over 32768: {num_over_32k}")
-    print(
-        f"Percentage of dataset over 32768 tokens: {(num_over_32k / len(combined_token_lengths)) * 100:.2f}%"
-    )
+    print(f"Percentage of dataset over 32768 tokens: {(num_over_32k / len(combined_token_lengths)) * 100:.2f}%")
 
-    print(
-        f"Mean combined token length: {sum(combined_token_lengths) / len(combined_token_lengths)}"
-    )
-    print(
-        f"Median combined token length: {sorted(combined_token_lengths)[len(combined_token_lengths) // 2]}"
-    )
+    print(f"Mean combined token length: {sum(combined_token_lengths) / len(combined_token_lengths)}")
+    print(f"Median combined token length: {sorted(combined_token_lengths)[len(combined_token_lengths) // 2]}")
     print(f"Max combined token length: {max(combined_token_lengths)}")
     print(f"Min combined token length: {min(combined_token_lengths)}")
 
@@ -137,9 +95,7 @@ def analyze_token_lengths(dataset_name):
     plt.grid(True, alpha=0.3)
 
     # Save plot
-    plt.savefig(
-        os.path.join(dev_dir, f"{plot_prefix}_combined_length_distribution.png")
-    )
+    plt.savefig(os.path.join(dev_dir, f"{plot_prefix}_combined_length_distribution.png"))
     plt.close()
 
     plt.figure(figsize=(10, 6))
@@ -149,9 +105,7 @@ def analyze_token_lengths(dataset_name):
     plt.ylabel("Frequency")
     plt.grid(True, alpha=0.3)
     # Save plot
-    plt.savefig(
-        os.path.join(dev_dir, f"{plot_prefix}_reasoning_length_distribution.png")
-    )
+    plt.savefig(os.path.join(dev_dir, f"{plot_prefix}_reasoning_length_distribution.png"))
     plt.close()
 
 

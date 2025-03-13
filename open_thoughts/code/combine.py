@@ -6,31 +6,11 @@ def combine(datasets_dict, dry_run=False):
     taco = datasets_dict["BAAI/TACO"]
     codeforces = datasets_dict["MatrixStudio/Codeforces-Python-Submissions"]
     # Standardize schema for all datasets
-    apps = apps.map(
-        lambda x: {
-            "language": (
-                [x["language"]]
-                if isinstance(x["language"], str)
-                else x["language"]["language"]
-            )
-        }
-    )
+    apps = apps.map(lambda x: {"language": [x["language"]] if isinstance(x["language"], str) else x["language"]["language"]})
 
-    taco = taco.map(
-        lambda x: {
-            "language": (
-                [x["language"]] if isinstance(x["language"], str) else x["language"]
-            )
-        }
-    )
+    taco = taco.map(lambda x: {"language": [x["language"]] if isinstance(x["language"], str) else x["language"]})
 
-    codeforces = codeforces.map(
-        lambda x: {
-            "language": (
-                [x["language"]] if isinstance(x["language"], str) else x["language"]
-            )
-        }
-    )
+    codeforces = codeforces.map(lambda x: {"language": [x["language"]] if isinstance(x["language"], str) else x["language"]})
     # codeforces = codeforces.remove_columns(["__index_level_0__"])
     codeforces = codeforces.remove_columns(["solutions"])
     apps = apps.remove_columns(["solutions"])
@@ -39,13 +19,7 @@ def combine(datasets_dict, dry_run=False):
     if not dry_run:
         code_contests = datasets_dict["deepmind/code_contests"]
 
-        code_contests = code_contests.map(
-            lambda x: {
-                "language": (
-                    [x["language"]] if isinstance(x["language"], str) else x["language"]
-                )
-            }
-        )
+        code_contests = code_contests.map(lambda x: {"language": [x["language"]] if isinstance(x["language"], str) else x["language"]})
 
         code_contests = code_contests.remove_columns(["solutions"])
         code_contests = code_contests.cast_column("difficulty", Value("string"))
@@ -60,9 +34,7 @@ def combine(datasets_dict, dry_run=False):
         taco = taco.cast(new_features)
         codeforces = codeforces.cast(new_features)
 
-        code_stratos_scale = concatenate_datasets(
-            [code_contests, apps, taco, codeforces]
-        )
+        code_stratos_scale = concatenate_datasets([code_contests, apps, taco, codeforces])
 
     else:
         code_stratos_scale = concatenate_datasets([apps, taco, codeforces])

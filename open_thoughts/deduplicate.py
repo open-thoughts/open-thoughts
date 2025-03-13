@@ -9,20 +9,12 @@ from rapidfuzz import fuzz, process
 from tqdm import tqdm
 
 
-def fuzz_string_pair(
-    str1: str, values2: List[str], similarity_threshold: float
-) -> List[Tuple]:
-    matches_with_scores = process.extract(
-        str1, values2, scorer=fuzz.ratio, score_cutoff=similarity_threshold
-    )
-    return [
-        (str1, match_tuple[0], match_tuple[1]) for match_tuple in matches_with_scores
-    ]
+def fuzz_string_pair(str1: str, values2: List[str], similarity_threshold: float) -> List[Tuple]:
+    matches_with_scores = process.extract(str1, values2, scorer=fuzz.ratio, score_cutoff=similarity_threshold)
+    return [(str1, match_tuple[0], match_tuple[1]) for match_tuple in matches_with_scores]
 
 
-def deduplicate(
-    dataset: Dataset, column="question", similarity_threshold: float = 95.0
-) -> Dataset:
+def deduplicate(dataset: Dataset, column="question", similarity_threshold: float = 95.0) -> Dataset:
     """Fuzzy deduplicate dataset rows based on fuzzy string matching within specified column."""
     values = [str(x) for x in dataset[column] if x is not None]
     unique_values = list(set(values))

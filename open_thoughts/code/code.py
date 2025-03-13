@@ -11,7 +11,9 @@ from open_thoughts.prompt import SKY_T1_SYSTEM_PROMPT, format_code_prompt
 
 def map_code_to_share_gpt(row):
     user_message = format_code_prompt(row)
-    assistant_message = f"<|begin_of_thought|>\n\n{row['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{row['deepseek_solution']}\n\n<|end_of_solution|>"
+    assistant_message = (
+        f"<|begin_of_thought|>\n\n{row['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{row['deepseek_solution']}\n\n<|end_of_solution|>"
+    )
 
     return {
         "system": SKY_T1_SYSTEM_PROMPT,
@@ -47,9 +49,7 @@ if __name__ == "__main__":
 
     for subset in subsets:
         print(f"Standardizing {subset}...")
-        ds = standardize(
-            subset, num_hf_proc_workers=os.cpu_count(), dry_run=args.dry_run
-        )
+        ds = standardize(subset, num_hf_proc_workers=os.cpu_count(), dry_run=args.dry_run)
         ds = ds.add_column("subset", [subset] * len(ds))
 
         if args.dry_run:
@@ -71,12 +71,6 @@ if __name__ == "__main__":
         print(ds[0])
         print("================")
 
-    ds.push_to_hub(
-        f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations{'-dry-run' if args.dry_run else ''}",
-        private=os.environ.get("HF_PRIVATE"),
-    )
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code-annotations{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))
     ds = ds.add_column("domain", ["code"] * len(ds))
-    ds.push_to_hub(
-        f"{os.environ.get('HF_ORG')}/open-thoughts-code{'-dry-run' if args.dry_run else ''}",
-        private=os.environ.get("HF_PRIVATE"),
-    )
+    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-code{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))

@@ -23,9 +23,7 @@ def download_to_directory(directory, domain):
 
         os.remove(zip_filename)
     else:
-        print(
-            f"Folder {subject_folder} already exists. Skipping download and extraction."
-        )
+        print(f"Folder {subject_folder} already exists. Skipping download and extraction.")
 
 
 def load_json(file_path):
@@ -59,9 +57,7 @@ def subsample(dataset, num_samples_per_subtopic):
 
     sampled_dfs = []
     for subtopic in df["sub_topic"].unique():
-        subtopic_sample = df[df["sub_topic"] == subtopic].sample(
-            n=num_samples_per_subtopic, random_state=42
-        )
+        subtopic_sample = df[df["sub_topic"] == subtopic].sample(n=num_samples_per_subtopic, random_state=42)
         sampled_dfs.append(subtopic_sample)
     result_df = pd.concat(sampled_dfs)
 

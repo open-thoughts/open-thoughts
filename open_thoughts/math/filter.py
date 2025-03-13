@@ -5,9 +5,7 @@ def filter_problems(x):
     for keyword in ["figure", "diagram", "jpeg", "png", "jpg", "svg", "answer:"]:
         if keyword in x["problem"].lower():
             return False
-    if (
-        x["problem"].lower().startswith("a)") and "b)" in x["problem"].lower()
-    ):  # These are multipart questions
+    if x["problem"].lower().startswith("a)") and "b)" in x["problem"].lower():  # These are multipart questions
         return False
     if x["solution"] is None:
         return False
@@ -24,25 +22,14 @@ if __name__ == "__main__":
     numina = load_dataset("AI-MO/NuminaMath-CoT", split="train")
     stats = []
     for source in ["amc_aime", "olympiads", "aops_forum", "math"]:
-        for keyword in [
-            "figure",
-            "diagram",
-            "jpeg",
-            "png",
-            "jpg",
-            "svg",
-            "answer:",
-            "\\boxed{}",
-        ]:
+        for keyword in ["figure", "diagram", "jpeg", "png", "jpg", "svg", "answer:", "\\boxed{}"]:
             print(f"##### {source} #####")
             ds = numina.filter(lambda x: x["source"] == source)
             ds = ds.filter(lambda x: keyword in x["problem"])
             if len(ds) > 0:
                 ds.add_column("filter", [keyword] * len(ds))
             ds.push_to_hub(f"mlfoundations-dev/{source}_{keyword}")
-            stats.append(
-                f"{keyword}: {len(ds)} https://huggingface.co/datasets/mlfoundations-dev/{source}_{keyword}"
-            )
+            stats.append(f"{keyword}: {len(ds)} https://huggingface.co/datasets/mlfoundations-dev/{source}_{keyword}")
         ds = numina.filter(filter_problems)
         print("\n".join(stats))
         print(f"original {source}: ", len(numina))

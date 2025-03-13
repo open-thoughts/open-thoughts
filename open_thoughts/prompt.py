@@ -19,7 +19,9 @@ def format_code_prompt(x):
     if not data.get("fn_name"):
         formatted_prompt += "Generate an executable Python function generated from the given prompt. The function should take stdin as input and print the output. Simply call the function after the definition."  # noqa
     else:
-        formatted_prompt += "Generate an executable Python function generated from the given prompt. Return the function body without invoking it at the final solution."  # noqa
+        formatted_prompt += (
+            "Generate an executable Python function generated from the given prompt. Return the function body without invoking it at the final solution."  # noqa
+        )
 
     formatted_prompt += x["problem"]
     if x["starter_code"] is not None:
@@ -52,7 +54,9 @@ def map_to_share_gpt(x):
 def map_numina_conversations(x):
     """Map the Numina dataset to the required format."""
     user_message = f"Return your final response within \\boxed{{}}. {x['problem']}"
-    assistant_message = f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    assistant_message = (
+        f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    )
     return {
         "system": SKY_T1_SYSTEM_PROMPT,
         "conversations": [
@@ -87,7 +91,9 @@ def map_apps_conversations(x):
         user_message += data
     else:
         pass
-    assistant_message = f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    assistant_message = (
+        f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    )
 
     return {
         "system": SKY_T1_SYSTEM_PROMPT,
@@ -123,7 +129,9 @@ def map_taco_conversations(x):
         user_message += data
     else:
         pass
-    assistant_message = f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    assistant_message = (
+        f"<|begin_of_thought|>\n\n{x['reasoning']}\n\n<|end_of_thought|>\n\n<|begin_of_solution|>\n\n{x['deepseek_solution']}\n\n<|end_of_solution|>"
+    )
 
     return {
         "system": SKY_T1_SYSTEM_PROMPT,
@@ -151,7 +159,5 @@ def map_still2_conversations(x):
 
 
 def apply_still2_map(dataset: Dataset) -> Dataset:
-    still2_conversations = dataset.filter(
-        lambda x: x["domain"] in ["puzzle", "physics", "biology", "chemistry"]
-    ).map(map_still2_conversations)
+    still2_conversations = dataset.filter(lambda x: x["domain"] in ["puzzle", "physics", "biology", "chemistry"]).map(map_still2_conversations)
     return still2_conversations
