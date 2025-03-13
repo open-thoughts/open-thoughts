@@ -9,7 +9,9 @@ from open_thoughts.deduplicate import fuzz_string_pair
 from open_thoughts.eval import EVALUATION_DATASETS
 
 
-def decontaminate(dataset: Dataset, column="question", evals=EVALUATION_DATASETS, threshold=95.0) -> Dataset:
+def decontaminate(
+    dataset: Dataset, column="question", evals=EVALUATION_DATASETS, threshold=95.0
+) -> Dataset:
     """Remove rows from dataset that have similar strings in eval_datasets based on fuzzy matching."""
     n_processes = mp.cpu_count()
 
@@ -22,12 +24,20 @@ def decontaminate(dataset: Dataset, column="question", evals=EVALUATION_DATASETS
         eval_columns = eval_info["eval_columns"]
         eval_subset = eval_info.get("eval_subset", None)
         if eval_subset is not None:
-            ds = load_dataset(eval_name, eval_subset, split=eval_splits, trust_remote_code=True)
+            ds = load_dataset(
+                eval_name, eval_subset, split=eval_splits, trust_remote_code=True
+            )
         else:
             ds = load_dataset(eval_name, split=eval_splits, trust_remote_code=True)
 
         # for each split, column, and value
-        eval_strings = [str(x) for split in ds for column in eval_columns for x in split[column] if x is not None]
+        eval_strings = [
+            str(x)
+            for split in ds
+            for column in eval_columns
+            for x in split[column]
+            if x is not None
+        ]
 
         # Track indices to remove
         process_pair = partial(

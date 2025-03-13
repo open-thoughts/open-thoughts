@@ -115,11 +115,15 @@ def run_test(sample, test=None, debug=False):
         # if which_type == CODE_TYPE.call_based or "class Solution" in test:
         if which_type == CODE_TYPE.call_based:
             synthesized_code = synthesize_cb_code(test, debug)
-            method_func = compile_and_get_func(synthesized_code, which_type, method_name, timeout=TIMEOUT, debug=debug)
+            method_func = compile_and_get_func(
+                synthesized_code, which_type, method_name, timeout=TIMEOUT, debug=debug
+            )
             # print(method_func)
         elif which_type == CODE_TYPE.standard_input:
             synthesized_code, exec_code = synthesize_std_code(test, debug)
-            method_func = compile_and_get_func(synthesized_code, which_type, method_name, timeout=TIMEOUT, debug=debug)
+            method_func = compile_and_get_func(
+                synthesized_code, which_type, method_name, timeout=TIMEOUT, debug=debug
+            )
         if not method_func:
             results.append(-2)
             return results
@@ -144,7 +148,9 @@ def run_test(sample, test=None, debug=False):
                     debug=debug,
                 )
                 debug_infos = detail_results.get("debug", None)
-                detail_results = {k: v for k, v in detail_results.items() if k != "debug"}
+                detail_results = {
+                    k: v for k, v in detail_results.items() if k != "debug"
+                }
                 if set(detail_results.values()) == {(False, "returncode:1")}:
                     detail_results = execute_std_code(
                         method_func,
@@ -159,7 +165,9 @@ def run_test(sample, test=None, debug=False):
         if isinstance(detail_results, list):
             if len(detail_results) == 1:
                 detail_results = detail_results * len(inputs_list)
-            detail_results = dict(zip([i for i in range(len(inputs_list))], detail_results))
+            detail_results = dict(
+                zip([i for i in range(len(inputs_list))], detail_results)
+            )
         for test_id, test_result in detail_results.items():
             if test_result[1] == "passed":
                 results.append(True)
@@ -268,7 +276,9 @@ def synthesize_std_code(raw_code, debug=False):
 
     started = False
 
-    special_import_lines = [i.lstrip("\t") for idx, i in enumerate(tmp_test) if code_types[idx] == 2]
+    special_import_lines = [
+        i.lstrip("\t") for idx, i in enumerate(tmp_test) if code_types[idx] == 2
+    ]
     special_import_lines = "\n".join(special_import_lines)
 
     for idx, i in enumerate(tmp_test):
@@ -324,7 +334,9 @@ def call_method(method, inputs):
     return _inner_call_method(method)
 
 
-def execute_cb_code(method, inputs_list, outputs_list, timeout, early_stop=True, debug=True):
+def execute_cb_code(
+    method, inputs_list, outputs_list, timeout, early_stop=True, debug=True
+):
     # Disable functionalities that can make destructive changes to the test.
     reliability_guard()
     results = []
@@ -379,7 +391,9 @@ def execute_cb_code(method, inputs_list, outputs_list, timeout, early_stop=True,
             continue
 
         if debug:
-            print(f"outputs = {exec_outputs}, test outputs = {outputs}, inputs = {inputs}, {type(inputs)}, {tmp_result}")
+            print(
+                f"outputs = {exec_outputs}, test outputs = {outputs}, inputs = {inputs}, {type(inputs)}, {tmp_result}"
+            )
             debug_infos[index] = {
                 "inputs": inputs,
                 "gt_outputs": outputs,
@@ -448,11 +462,17 @@ def execute_std_code(
         assert exec_code != -3
         exec_results[i] = (
             exec_code == 1,
-            EXECUTION_RESULTS[exec_code] if exec_code > -3 else EXECUTION_RESULTS[exec_code].format(result.returncode),
+            (
+                EXECUTION_RESULTS[exec_code]
+                if exec_code > -3
+                else EXECUTION_RESULTS[exec_code].format(result.returncode)
+            ),
         )
         if exec_code >= 0:
             if debug:
-                print_debug_info(inputs=inputs, outputs=outputs, exec_outputs=result.stdout)
+                print_debug_info(
+                    inputs=inputs, outputs=outputs, exec_outputs=result.stdout
+                )
                 exec_results["debug"][i] = {
                     "inputs": inputs,
                     "gt_outputs": outputs,
@@ -471,11 +491,15 @@ def print_debug_info(inputs, outputs, exec_outputs):
             f"exec output = {exec_outputs}, test outputs = {outputs}, inputs = {inputs.replace(nl, ' new-line ')}, {type(inputs)}, {exec_outputs == [outputs]}"
         )
     else:
-        print(f"exec output = {exec_outputs}, test outputs = {outputs}, inputs = {inputs}, {type(inputs)}, {exec_outputs == [outputs]}")
+        print(
+            f"exec output = {exec_outputs}, test outputs = {outputs}, inputs = {inputs}, {type(inputs)}, {exec_outputs == [outputs]}"
+        )
 
 
 def create_temp_file(content):
-    with tempfile.NamedTemporaryFile(delete=False, mode="w", encoding="utf-8") as temp_file:
+    with tempfile.NamedTemporaryFile(
+        delete=False, mode="w", encoding="utf-8"
+    ) as temp_file:
         temp_file.write(content)
         temp_file_path = temp_file.name
     return temp_file_path
@@ -506,7 +530,9 @@ def compare_std_results(exec_outputs, outputs, debug=False):
         if isinstance(outputs, list):
             tmp_result = tmp_result or (exec_outputs == outputs)
             if isinstance(exec_outputs[0], str):
-                tmp_result = tmp_result or ([e.strip() for e in exec_outputs] == outputs)
+                tmp_result = tmp_result or (
+                    [e.strip() for e in exec_outputs] == outputs
+                )
     except Exception as e:
         if debug:
             print(f"Failed check1 exception = {e}")
@@ -552,14 +578,19 @@ def compare_std_results(exec_outputs, outputs, debug=False):
     try:
         output_float = [float(e) for e in exec_outputs]
         gt_float = [float(e) for e in outputs]
-        tmp_result = tmp_result or ((len(output_float) == len(gt_float)) and np.allclose(output_float, gt_float))
+        tmp_result = tmp_result or (
+            (len(output_float) == len(gt_float)) and np.allclose(output_float, gt_float)
+        )
     except Exception:
         pass
     try:
         if isinstance(exec_outputs[0], list):
             output_float = [float(e) for e in exec_outputs[0]]
             gt_float = [float(e) for e in outputs[0]]
-            tmp_result = tmp_result or ((len(output_float) == len(gt_float)) and np.allclose(output_float, gt_float))
+            tmp_result = tmp_result or (
+                (len(output_float) == len(gt_float))
+                and np.allclose(output_float, gt_float)
+            )
     except Exception:
         pass
     if tmp_result:
@@ -591,7 +622,9 @@ def compare_std_results(exec_outputs, outputs, debug=False):
         exec_outputs = list(filter(len, exec_outputs))
         exec_outputs = set(exec_outputs)
     try:
-        tmp_result = set(frozenset(s) for s in exec_outputs) == set(frozenset(s) for s in outputs)
+        tmp_result = set(frozenset(s) for s in exec_outputs) == set(
+            frozenset(s) for s in outputs
+        )
     except Exception as e:
         if debug:
             print(f"Failed check5 exception = {e}")
@@ -599,7 +632,8 @@ def compare_std_results(exec_outputs, outputs, debug=False):
     # if they are all numbers, round so that similar numbers are treated as identical
     try:
         tmp_result = tmp_result or (
-            set(frozenset(round(float(t), 3) for t in s) for s in exec_outputs) == set(frozenset(round(float(t), 3) for t in s) for s in outputs)
+            set(frozenset(round(float(t), 3) for t in s) for s in exec_outputs)
+            == set(frozenset(round(float(t), 3) for t in s) for s in outputs)
         )
     except Exception as e:
         if debug:
@@ -631,10 +665,16 @@ def reliability_guard(maximum_memory_bytes=None):
     if maximum_memory_bytes is not None:
         import resource
 
-        resource.setrlimit(resource.RLIMIT_AS, (maximum_memory_bytes, maximum_memory_bytes))
-        resource.setrlimit(resource.RLIMIT_DATA, (maximum_memory_bytes, maximum_memory_bytes))
+        resource.setrlimit(
+            resource.RLIMIT_AS, (maximum_memory_bytes, maximum_memory_bytes)
+        )
+        resource.setrlimit(
+            resource.RLIMIT_DATA, (maximum_memory_bytes, maximum_memory_bytes)
+        )
         if not platform.uname().system == "Darwin":
-            resource.setrlimit(resource.RLIMIT_STACK, (maximum_memory_bytes, maximum_memory_bytes))
+            resource.setrlimit(
+                resource.RLIMIT_STACK, (maximum_memory_bytes, maximum_memory_bytes)
+            )
 
     faulthandler.disable()
 
@@ -799,7 +839,11 @@ def code_judge(df: Dataset, num_cpus: int = None, batch_size: int = 2048) -> Dat
         batch_correct = sum(1 for r in batch_results if r.get("correct", False))
         print(f"\nBatch {i // batch_size + 1} Results:")
         print(f"Processed examples: {len(all_results)}/{total_rows}")
-        print(f"Correct in this batch: {batch_correct}/{len(batch_results)} ({batch_correct / len(batch_results) * 100:.2f}%)")
-        print(f"Total correct so far: {sum(1 for r in all_results if r.get('correct', False))}/{len(all_results)}\n")
+        print(
+            f"Correct in this batch: {batch_correct}/{len(batch_results)} ({batch_correct / len(batch_results) * 100:.2f}%)"
+        )
+        print(
+            f"Total correct so far: {sum(1 for r in all_results if r.get('correct', False))}/{len(all_results)}\n"
+        )
 
     return Dataset.from_list(all_results)

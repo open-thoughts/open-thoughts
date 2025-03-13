@@ -1,4 +1,12 @@
-sources = ["UNKNOWN_SOURCE", "CODECHEF", "CODEFORCES", "HACKEREARTH", "CODEJAM", "ATCODER", "AIZU"]
+sources = [
+    "UNKNOWN_SOURCE",
+    "CODECHEF",
+    "CODEFORCES",
+    "HACKEREARTH",
+    "CODEJAM",
+    "ATCODER",
+    "AIZU",
+]
 
 code_contests_sources_map = {str(i): source for i, source in enumerate(sources)}
 

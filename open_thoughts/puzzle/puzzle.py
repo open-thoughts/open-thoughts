@@ -45,4 +45,7 @@ if __name__ == "__main__":
         print(ds[0])
         print("================")
 
-    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-puzzle{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))
+    ds.push_to_hub(
+        f"{os.environ.get('HF_ORG')}/open-thoughts-puzzle{'-dry-run' if args.dry_run else ''}",
+        private=os.environ.get("HF_PRIVATE"),
+    )

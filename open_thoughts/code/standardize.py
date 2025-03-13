@@ -6,8 +6,17 @@ from typing import Dict, List
 
 import datasets
 
-from open_thoughts.code.constants import COLUMNS, code_contests_languages_map, code_contests_sources_map
-from open_thoughts.code.filters import filter_num_solutions, filter_problem, filter_solutions, filter_tests
+from open_thoughts.code.constants import (
+    COLUMNS,
+    code_contests_languages_map,
+    code_contests_sources_map,
+)
+from open_thoughts.code.filters import (
+    filter_num_solutions,
+    filter_problem,
+    filter_solutions,
+    filter_tests,
+)
 
 
 def map_languages(solutions: Dict[str, list]) -> dict:
@@ -76,8 +85,12 @@ def codecontests_combine_tests(
     generated_tests: List[Dict[str, List[str]]],
 ) -> Dict[str, List[str]]:
     return {
-        "inputs": public_tests["input"] + private_tests["input"] + generated_tests["input"],
-        "outputs": public_tests["output"] + private_tests["output"] + generated_tests["output"],
+        "inputs": public_tests["input"]
+        + private_tests["input"]
+        + generated_tests["input"],
+        "outputs": public_tests["output"]
+        + private_tests["output"]
+        + generated_tests["output"],
     }
 
 
@@ -114,20 +127,30 @@ def apps_rename_columns(dataset: datasets.Dataset) -> datasets.Dataset:
     return datasets.Dataset.from_pandas(df)
 
 
-def apps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> datasets.Dataset:
+def apps_process(
+    dataset: datasets.Dataset, num_hf_proc_workers: int = 1
+) -> datasets.Dataset:
     dataset = dataset.map(
         lambda x: {
             "problem_id": compute_problem_id(x["question"]),
             "difficulty": x["difficulty"].upper(),
             "name": x.get("name") if x.get("name") else "UNKNOWN",
             "language": "PYTHON3",
-            "source": (get_domain(x["url"]).replace("www.", "").replace(".com", "").upper() if x["url"] else "UNKNOWN_SOURCE"),
+            "source": (
+                get_domain(x["url"]).replace("www.", "").replace(".com", "").upper()
+                if x["url"]
+                else "UNKNOWN_SOURCE"
+            ),
         },
         num_proc=num_hf_proc_workers,
     )
 
-    dataset = dataset.filter(lambda x: filter_problem(x["question"]), num_proc=num_hf_proc_workers)
-    dataset = dataset.filter(lambda x: filter_tests(x["input_output"]), num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: filter_problem(x["question"]), num_proc=num_hf_proc_workers
+    )
+    dataset = dataset.filter(
+        lambda x: filter_tests(x["input_output"]), num_proc=num_hf_proc_workers
+    )
 
     dataset = dataset.map(
         lambda x: {
@@ -136,7 +159,9 @@ def apps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> dat
         num_proc=num_hf_proc_workers,
     )
 
-    dataset = dataset.filter(lambda x: x["num_solutions"] > 0, num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: x["num_solutions"] > 0, num_proc=num_hf_proc_workers
+    )
 
     dataset = apps_rename_columns(dataset)
     dataset = dataset.select_columns(COLUMNS)
@@ -178,8 +203,12 @@ def rename_cps(dataset: datasets.Dataset) -> datasets.Dataset:
     return datasets.Dataset.from_pandas(df)
 
 
-def cps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> datasets.Dataset:
-    dataset = dataset.filter(lambda x: x["verdict"] == "OK", num_proc=num_hf_proc_workers)
+def cps_process(
+    dataset: datasets.Dataset, num_hf_proc_workers: int = 1
+) -> datasets.Dataset:
+    dataset = dataset.filter(
+        lambda x: x["verdict"] == "OK", num_proc=num_hf_proc_workers
+    )
 
     dataset = dataset.map(
         lambda x: {
@@ -190,9 +219,21 @@ def cps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> data
 
     dataset = dataset.map(
         lambda x: {
-            "description": x["problem-description"] + "\n" + x["input-specification"] + "\n" + x["output-specification"] + "\n" + x["sample-tests"],
+            "description": x["problem-description"]
+            + "\n"
+            + x["input-specification"]
+            + "\n"
+            + x["output-specification"]
+            + "\n"
+            + x["sample-tests"],
             "problem_id": compute_problem_id(
-                x["problem-description"] + "\n" + x["input-specification"] + "\n" + x["output-specification"] + "\n" + x["sample-tests"]
+                x["problem-description"]
+                + "\n"
+                + x["input-specification"]
+                + "\n"
+                + x["output-specification"]
+                + "\n"
+                + x["sample-tests"]
             ),
         },
         num_proc=num_hf_proc_workers,
@@ -200,7 +241,9 @@ def cps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> data
 
     dataset = cps_groupby_problem_id(dataset)
 
-    dataset = dataset.filter(lambda x: filter_problem(x["description"]), num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: filter_problem(x["description"]), num_proc=num_hf_proc_workers
+    )
 
     dataset = dataset.map(
         lambda x: {
@@ -215,7 +258,9 @@ def cps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> data
         num_proc=num_hf_proc_workers,
     )
 
-    dataset = dataset.filter(lambda x: filter_tests(x["test_cases"]), num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: filter_tests(x["test_cases"]), num_proc=num_hf_proc_workers
+    )
 
     dataset = rename_cps(dataset)
 
@@ -239,9 +284,13 @@ def cps_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> data
     return dataset
 
 
-def codecontests_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1) -> datasets.Dataset:
+def codecontests_process(
+    dataset: datasets.Dataset, num_hf_proc_workers: int = 1
+) -> datasets.Dataset:
     """Process code contests dataset."""
-    dataset = dataset.filter(lambda x: filter_problem(x["description"]), num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: filter_problem(x["description"]), num_proc=num_hf_proc_workers
+    )
 
     dataset = dataset.map(
         lambda x: {
@@ -253,7 +302,9 @@ def codecontests_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1
 
     dataset = dataset.map(
         lambda x: {
-            "tests": codecontests_combine_tests(x["public_tests"], x["private_tests"], x["generated_tests"]),
+            "tests": codecontests_combine_tests(
+                x["public_tests"], x["private_tests"], x["generated_tests"]
+            ),
             "num_solutions": len(x["solutions"]),
         },
         num_proc=num_hf_proc_workers,
@@ -269,7 +320,9 @@ def codecontests_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1
         num_proc=num_hf_proc_workers,
     )
 
-    dataset = dataset.filter(lambda x: filter_num_solutions(x["num_solutions"]), num_proc=num_hf_proc_workers)
+    dataset = dataset.filter(
+        lambda x: filter_num_solutions(x["num_solutions"]), num_proc=num_hf_proc_workers
+    )
 
     dataset = dataset.map(
         lambda x: {
@@ -292,7 +345,9 @@ def codecontests_process(dataset: datasets.Dataset, num_hf_proc_workers: int = 1
     return dataset
 
 
-def standardize(dataset_name_or_path: str, num_hf_proc_workers: int = 1, dry_run: bool = False) -> datasets.Dataset:
+def standardize(
+    dataset_name_or_path: str, num_hf_proc_workers: int = 1, dry_run: bool = False
+) -> datasets.Dataset:
     """Process code dataset.
 
     Args:

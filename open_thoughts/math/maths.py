@@ -13,7 +13,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     ds = load_dataset("AI-MO/NuminaMath-CoT", split="train")
-    ds = ds.filter(lambda x: x["source"] in ["amc_aime", "olympiads", "aops_forum", "math"])
+    ds = ds.filter(
+        lambda x: x["source"] in ["amc_aime", "olympiads", "aops_forum", "math"]
+    )
     ds = ds.filter(filter_problems)
     ds = ds.rename_column("source", "source_subset")
     ds = ds.rename_column("problem", "question")
@@ -33,4 +35,7 @@ if __name__ == "__main__":
         print(ds[0])
         print("================")
 
-    ds.push_to_hub(f"{os.environ.get('HF_ORG')}/open-thoughts-math{'-dry-run' if args.dry_run else ''}", private=os.environ.get("HF_PRIVATE"))
+    ds.push_to_hub(
+        f"{os.environ.get('HF_ORG')}/open-thoughts-math{'-dry-run' if args.dry_run else ''}",
+        private=os.environ.get("HF_PRIVATE"),
+    )
