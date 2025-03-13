@@ -37,8 +37,8 @@ Our first goal is to curate a reasoning dataset to train state-of-the-art small 
 
 # Results
 The numbers reported in the table below are evaluated with our open-source tool [Evalchemy](https://github.com/mlfoundations/Evalchemy).
-[OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) vs other 32B models:
 
+[OpenThinker-32B](https://huggingface.co/open-thoughts/OpenThinker-32B) vs other 32B models:
 | Model Name                   | AIME24 | AIME25 I | MATH500 | GPQA-Diamond | LCBv2 All |
 | ---------------------------- | ------ | -------- | ------- | ------------ | --------- |
 | OpenThinker-32B              | 66.0   | 53.3     | **90.6**| **61.6**     | 68.9      |
