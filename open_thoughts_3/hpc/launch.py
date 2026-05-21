@@ -20,12 +20,12 @@ def check_exists(local_path):
         return False
 
 def launch_sbatch(sbatch_script_path, dependency=None) -> str:
+    sbatch_cmd = ["sbatch"]
     if dependency is not None:
-        sbatch_cmd = f"sbatch --dependency={dependency} {sbatch_script_path}"
-    else:
-        sbatch_cmd = f"sbatch {sbatch_script_path}"
+        sbatch_cmd.append(f"--dependency={dependency}")
+    sbatch_cmd.append(sbatch_script_path)
 
-    job_id = subprocess.check_output(sbatch_cmd, shell=True).decode("utf-8").strip()
+    job_id = subprocess.check_output(sbatch_cmd).decode("utf-8").strip()
     print(f"Job {job_id} submitted with dependency {dependency}.")
     return job_id
 
